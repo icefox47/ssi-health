@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 import base58
+from datetime import datetime, timezone
 
 from common.vc_schema import VerifiableCredential
 from common.crypto import verify_signature
@@ -9,6 +10,11 @@ router = APIRouter()
 
 class VerifyRequest(BaseModel):
     vc: VerifiableCredential
+
+class VerifyZkpRequest(BaseModel):
+    proof: dict
+    publicSignals: list
+    verificationKey: dict
 
 @router.post("/verify")
 def verify_credential(request: VerifyRequest):
@@ -47,13 +53,47 @@ def verify_credential(request: VerifyRequest):
         if not is_valid:
             return {"valid": False, "reason": "Invalid cryptographic signature."}
             
+        # 4. Expiration check
+        if vc.expirationDate:
+            exp_date = datetime.fromisoformat(vc.expirationDate.replace('Z', '+00:00'))
+            now = datetime.now(timezone.utc)
+            if now > exp_date:
+                return {"valid": False, "reason": "Credential has expired.", "status": "expired"}
+                
+        # 5. Revocation check
+        # We fetch the revocation list from the DB
+        from common.db import SessionLocal, IssuedCredential
+        db = SessionLocal()
+        try:
+            cred_in_db = db.query(IssuedCredential).filter(IssuedCredential.vc_id == vc.id).first()
+            if cred_in_db and cred_in_db.status == "revoked":
+                return {"valid": False, "reason": "Credential has been revoked.", "status": "revoked"}
+        finally:
+            db.close()
+            
         return {
             "valid": True,
+            "status": "valid",
             "issuer": issuer_did,
             "subject": vc.credentialSubject.id,
             "type": vc.type
         }
     except HTTPException:
         raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.post("/verify-zkp")
+def verify_zkp(request: VerifyZkpRequest):
+    """
+    Mock endpoint for verifying ZKP proofs for selective disclosure.
+    In a real implementation, this would use py-snarkjs or a Python circom verifier.
+    """
+    try:
+        # Mock verification logic for prototype
+        # If public signals start with 1, we treat it as a valid proof (e.g. over 18)
+        if request.publicSignals and request.publicSignals[0] == "1":
+            return {"valid": True, "status": "valid", "latency_ms": 12, "match": True}
+        return {"valid": False, "status": "invalid", "reason": "Proof invalid against verification key."}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
