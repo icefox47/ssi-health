@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../App';
-import { Shield, FileBadge, Ban, ScrollText, LogOut } from 'lucide-react';
+import { Shield, FileBadge, Ban, ScrollText, LogOut, BarChart3 } from 'lucide-react';
 
 function DashboardLayout() {
   const { logout } = useAuth();
@@ -32,6 +32,10 @@ function DashboardLayout() {
           <NavLink to="/logs" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
             <ScrollText size={20} />
             Audit Logs
+          </NavLink>
+          <NavLink to="/analytics" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+            <BarChart3 size={20} />
+            Analytics & FL
           </NavLink>
         </div>
         

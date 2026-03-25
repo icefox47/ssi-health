@@ -4,6 +4,7 @@ import uvicorn
 
 from issuer.issuer_api import router as issuer_router
 from verifier.verifier_api import router as verifier_router
+from fl_aggregator.api import router as fl_router
 from common.db import init_db
 
 app = FastAPI(title="SSI Health API - Phase 2", version="2.0.0")
@@ -23,6 +24,7 @@ def on_startup():
 
 app.include_router(issuer_router, prefix="/api/issuer", tags=["Issuer"])
 app.include_router(verifier_router, prefix="/api/verifier", tags=["Verifier"])
+app.include_router(fl_router, prefix="/api/fl", tags=["Federated Learning"])
 
 @app.get("/health")
 def health_check():

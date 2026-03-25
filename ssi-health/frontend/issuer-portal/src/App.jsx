@@ -5,6 +5,7 @@ import DashboardLayout from './components/DashboardLayout';
 import IssueCredential from './components/IssueCredential';
 import RevocationPanel from './components/RevocationPanel';
 import AuditLogs from './components/AuditLogs';
+import AnalyticsDashboard from './components/AnalyticsDashboard';
 import { jwtDecode } from 'jwt-decode';
 
 export const AuthContext = createContext();
@@ -55,6 +56,7 @@ function App() {
             <Route index element={<IssueCredential />} />
             <Route path="revoke" element={<RevocationPanel />} />
             <Route path="logs" element={<AuditLogs />} />
+            <Route path="analytics" element={<AnalyticsDashboard />} />
           </Route>
         </Routes>
       </Router>

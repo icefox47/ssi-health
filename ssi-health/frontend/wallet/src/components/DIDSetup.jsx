@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { api } from "../api";
 import { saveVault, loadVault } from "../crypto";
-import { KeyRound, FileText, CheckCircle, Copy, QrCode } from "lucide-react";
+import { KeyRound, FileText, CheckCircle, Copy, QrCode, ShieldCheck, ShieldAlert } from "lucide-react";
 import QRCode from "react-qr-code";
 
 const WALLET_PASSWORD = "ssi-demo-password"; // In production, prompt user
@@ -24,6 +24,7 @@ export default function DIDSetup({ vault, setVault }) {
         },
         didDocument: data.didDocument,
         credentials: [],
+        fl_consent: false
       };
       saveVault(newVault, WALLET_PASSWORD);
       setVault(newVault);
@@ -38,6 +39,12 @@ export default function DIDSetup({ vault, setVault }) {
     navigator.clipboard.writeText(vault?.did || "");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const toggleConsent = () => {
+    const newVault = { ...vault, fl_consent: !vault.fl_consent };
+    saveVault(newVault, WALLET_PASSWORD);
+    setVault(newVault);
   };
 
   if (vault?.did) {
@@ -85,6 +92,33 @@ export default function DIDSetup({ vault, setVault }) {
             >
               {copied ? <CheckCircle size={16} /> : <Copy size={16} />}
               {copied ? "Copied!" : "Copy DID"}
+            </button>
+          </div>
+        </div>
+
+        {/* FL Consent Toggle */}
+        <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 flex items-start gap-4">
+          <div className="pt-1">
+            {vault.fl_consent ? (
+              <ShieldCheck size={24} className="text-emerald-500" />
+            ) : (
+              <ShieldAlert size={24} className="text-gray-400" />
+            )}
+          </div>
+          <div className="flex-1">
+            <h3 className="text-sm font-bold text-gray-800 mb-1">Health Analytics Participation</h3>
+            <p className="text-xs text-gray-500 mb-3 leading-relaxed">
+              Help research by donating encrypted model updates. <strong>No raw data ever leaves your device</strong>, and Differential Privacy mathematically guarantees your anonymity.
+            </p>
+            <button
+              onClick={toggleConsent}
+              className={`w-full py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
+                vault.fl_consent 
+                  ? 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200' 
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
+              {vault.fl_consent ? "Participating in Analytics" : "Opt-in to Analytics"}
             </button>
           </div>
         </div>
