@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from datetime import datetime, timezone, timedelta
 import uuid
 import base64
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from pydantic import BaseModel
 
 from common.did_utils import generate_keypair, derive_did_key, create_did_document
@@ -28,6 +28,7 @@ class IssueRequest(BaseModel):
     subject_did: str
     credential_type: str = "VaccinationCredential"
     claims: Dict[str, Any]
+    expiration_date: Optional[str] = None
 
 class Token(BaseModel):
     access_token: str
@@ -84,6 +85,7 @@ def issue_credential(
             type=["VerifiableCredential", request.credential_type],
             issuer=ISSUER_DID,
             issuanceDate=now,
+            expirationDate=request.expiration_date,
             credentialSubject=subject
         )
         

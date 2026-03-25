@@ -24,6 +24,7 @@ function IssueCredential() {
   const [credType, setCredType] = useState('VaccinationCredential');
   const [subjectDid, setSubjectDid] = useState('');
   const [claims, setClaims] = useState({});
+  const [expDate, setExpDate] = useState('');
   const [scanning, setScanning] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState('');
@@ -45,10 +46,16 @@ function IssueCredential() {
         credential_type: credType,
         claims: claims
       };
+      
+      if (expDate) {
+        payload.expiration_date = new Date(expDate).toISOString();
+      }
+
       await api.post('/issue', payload);
       setSuccess('Credential issued successfully!');
       setSubjectDid('');
       setClaims({});
+      setExpDate('');
     } catch (err) {
       setError('Failed to issue credential.');
     } finally {
@@ -114,6 +121,16 @@ function IssueCredential() {
                 />
               </div>
             )}
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Expiration Date (Optional)</label>
+            <input 
+              type="date"
+              className="form-input text-gray-800"
+              value={expDate} 
+              onChange={e => setExpDate(e.target.value)}
+            />
           </div>
 
           <div style={{ margin: '2rem 0', height: '1px', background: 'var(--border-color)' }}></div>

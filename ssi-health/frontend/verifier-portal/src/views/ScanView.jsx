@@ -10,28 +10,39 @@ const ScanView = () => {
   const [latency, setLatency] = useState(0);
 
   useEffect(() => {
-    // Only initialize scanner if there's no result
+    // Only initialize scanner if there's no result and scanner div exists
     if (scanResult) return;
+    const el = document.getElementById("qr-reader");
+    if (!el) return;
 
-    const scanner = new Html5QrcodeScanner(
-      "qr-reader",
-      { fps: 10, qrbox: { width: 300, height: 300 } },
-      /* verbose= */ false
-    );
+    let scanner;
+    try {
+      scanner = new Html5QrcodeScanner(
+        "qr-reader",
+        { fps: 10, qrbox: { width: 300, height: 300 }, supportedScanTypes: [0, 1] }, // 0: Camera, 1: File
+        /* verbose= */ false
+      );
 
-    scanner.render(
-      async (decodedText) => {
-        scanner.clear();
-        setScanResult(decodedText);
-        await verifyCredential(decodedText);
-      },
-      (errorMessage) => {
-        // ignore scan errors (they happen every frame when no QR is detected)
-      }
-    );
+      scanner.render(
+        async (decodedText) => {
+          if (scanner) {
+            scanner.clear().catch(e => console.log("Scanner clear ignore:", e));
+          }
+          setScanResult(decodedText);
+          await verifyCredential(decodedText);
+        },
+        (errorMessage) => {
+          // ignore scan errors
+        }
+      );
+    } catch (e) {
+      console.error("Scanner init error:", e);
+    }
 
     return () => {
-      scanner.clear().catch(console.error);
+      if (scanner) {
+        scanner.clear().catch(e => console.log("Scanner cleanup ignore:", e));
+      }
     };
   }, [scanResult]);
 
@@ -40,15 +51,17 @@ const ScanView = () => {
     const startTime = performance.now();
     
     try {
-      // Allow for raw JSON string or URL safe b64 if the issuer portal is encoding
-      let vc;
+      let parsedPayload;
       try {
-        vc = JSON.parse(payload);
+        parsedPayload = JSON.parse(payload);
       } catch (e) {
-        vc = JSON.parse(atob(payload));
+        parsedPayload = JSON.parse(atob(payload));
       }
 
-      const res = await axios.post('http://localhost:8000/api/verifier/verify', { vc });
+      // The wallet wraps the VC in { vc: {}, timestamp: "" } for QR codes
+      const vcToVerify = parsedPayload.vc || parsedPayload;
+
+      const res = await axios.post('http://localhost:8000/api/verifier/verify', { vc: vcToVerify });
       
       const endTime = performance.now();
       setLatency(Math.round(endTime - startTime));
@@ -57,10 +70,25 @@ const ScanView = () => {
       console.error(error);
       const endTime = performance.now();
       setLatency(Math.round(endTime - startTime));
+      
+      let errorMsg = "Credential payload invalid or unreadable.";
+      if (error?.response?.data?.detail) {
+        const detail = error.response.data.detail;
+        if (typeof detail === 'string') {
+          errorMsg = detail;
+        } else if (Array.isArray(detail)) {
+          errorMsg = detail.map(e => e.msg || 'Invalid format').join(", ");
+        } else {
+          errorMsg = JSON.stringify(detail);
+        }
+      } else if (error?.message) {
+        errorMsg = error.message;
+      }
+
       setVerificationData({
         valid: false,
         status: "invalid",
-        reason: error.response?.data?.detail || "Credential payload invalid or unreadable.",
+        reason: String(errorMsg),
       });
     } finally {
       setIsVerifying(false);
@@ -84,16 +112,16 @@ const ScanView = () => {
       <h2 className="view-title">Scan Verifiable Credential</h2>
       <p className="view-subtitle">Point the camera at the patient's QR code.</p>
 
-      {!scanResult ? (
-        <div className="scanner-container">
-          <div id="qr-reader" className="w-full max-w-md mx-auto shadow-md rounded-lg overflow-hidden border border-gray-700"></div>
-        </div>
-      ) : (
-        <div className="result-container animate-fade-in">
+      <div className="scanner-container" style={{ display: scanResult ? 'none' : 'block' }}>
+        <div id="qr-reader" className="w-full max-w-md mx-auto shadow-md rounded-lg overflow-hidden border border-gray-700 bg-gray-900"></div>
+      </div>
+
+      {scanResult && (
+        <div className="result-container animate-fade-in mt-4">
           {isVerifying ? (
-            <div className="verifying-state">
+            <div className="verifying-state text-center py-12 bg-gray-800 rounded-lg">
               <RefreshCcw size={48} className="animate-spin text-blue-500 mx-auto mb-4" />
-              <h3>Verifying Cryptographic Signature...</h3>
+              <h3 className="text-xl text-gray-300">Verifying Cryptographic Signature...</h3>
             </div>
           ) : (
             <div className={`result-card ${verificationData?.valid ? 'border-green-500 bg-green-900/20' : verificationData?.status === 'expired' ? 'border-yellow-500 bg-yellow-900/20' : 'border-red-500 bg-red-900/20'}`}>
@@ -122,10 +150,10 @@ const ScanView = () => {
               {verificationData?.valid && (
                 <div className="details-box text-left bg-gray-800 rounded p-4 mb-6">
                   <p className="text-gray-400 text-sm mb-1">Subject DID</p>
-                  <p className="font-mono text-xs text-blue-300 mb-3 truncate" title={verificationData.subject}>{verificationData.subject}</p>
+                  <p className="font-mono text-xs text-blue-300 mb-3 truncate" title={verificationData.subject}>{verificationData.subject || "Unknown"}</p>
                   
                   <p className="text-gray-400 text-sm mb-1">Credential Types</p>
-                  <p className="text-sm text-gray-200">{verificationData.type?.join(', ')}</p>
+                  <p className="text-sm text-gray-200">{Array.isArray(verificationData.type) ? verificationData.type.join(', ') : (verificationData.type?.toString() || "Unknown")}</p>
                 </div>
               )}
 

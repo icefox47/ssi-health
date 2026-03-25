@@ -1,4 +1,346 @@
-INFO:     Started server process [34139]
+/home/dex/Project/ssi-health/backend/main.py:21: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+INFO:     Will watch for changes in these directories: ['/home/dex/Project/ssi-health/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [11372] using WatchFiles
+INFO:     Started server process [11471]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:41084 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41098 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41084 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41098 - "OPTIONS /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41098 - "OPTIONS /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41084 - "GET /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41098 - "GET /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41084 - "OPTIONS /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41098 - "OPTIONS /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41098 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41084 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41098 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41084 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41098 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41084 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41098 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41084 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41098 - "GET /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41084 - "GET /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41098 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41084 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38578 - "GET /api/issuer/wallet/credentials/did%3Akey%3Az6MknzrGidNV35nyvdaTrNzVmAbs4kJAb2k8tv9n5AR6oRoW HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38578 - "GET /api/issuer/wallet/credentials/did%3Akey%3Az6MknzrGidNV35nyvdaTrNzVmAbs4kJAb2k8tv9n5AR6oRoW HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35754 - "OPTIONS /api/verifier/verify HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35754 - "POST /api/verifier/verify HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:35176 - "POST /api/verifier/verify HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:45546 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45546 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52720 - "POST /api/issuer/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36182 - "POST /api/fl/reset HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36188 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36202 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36216 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36224 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36236 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36252 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36256 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36264 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36274 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36288 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36298 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36300 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36306 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36310 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36320 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36330 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36336 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36348 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36360 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36376 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36384 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36396 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36408 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36412 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36418 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36432 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47218 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47230 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47236 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47246 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47256 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47262 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47268 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47270 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47280 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47286 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47302 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47314 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47324 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47340 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47342 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47346 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47362 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47370 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47386 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47400 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47412 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47414 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47420 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47424 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47438 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47442 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47444 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47448 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60658 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60668 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60682 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60690 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60704 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60714 - "POST /api/fl/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36354 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53010 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39250 - "POST /api/verifier/verify HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:47346 - "POST /api/verifier/verify HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:33572 - "POST /api/verifier/verify HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:38768 - "POST /api/verifier/verify HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:42928 - "POST /api/verifier/verify HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:48980 - "GET /api/issuer/wallet/credentials/did%3Akey%3Az6MknzrGidNV35nyvdaTrNzVmAbs4kJAb2k8tv9n5AR6oRoW HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48992 - "GET /api/issuer/wallet/credentials/did%3Akey%3Az6MknzrGidNV35nyvdaTrNzVmAbs4kJAb2k8tv9n5AR6oRoW HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58238 - "OPTIONS /api/verifier/verify HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58238 - "POST /api/verifier/verify HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:35850 - "POST /api/verifier/verify HTTP/1.1" 500 Internal Server Error
+WARNING:  WatchFiles detected changes in 'common/vc_schema.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [11471]
+INFO:     Started server process [13416]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'issuer/issuer_api.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [13416]
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/lib/python3.10/multiprocessing/spawn.py", line 116, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/usr/lib/python3.10/multiprocessing/spawn.py", line 125, in _main
+    prepare(preparation_data)
+  File "/usr/lib/python3.10/multiprocessing/spawn.py", line 236, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/usr/lib/python3.10/multiprocessing/spawn.py", line 287, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+  File "/usr/lib/python3.10/runpy.py", line 289, in run_path
+    return _run_module_code(code, init_globals, run_name,
+  File "/usr/lib/python3.10/runpy.py", line 96, in _run_module_code
+    _run_code(code, mod_globals, init_globals,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/dex/Project/ssi-health/backend/main.py", line 5, in <module>
+    from issuer.issuer_api import router as issuer_router
+  File "/home/dex/Project/ssi-health/backend/issuer/issuer_api.py", line 27, in <module>
+    class IssueRequest(BaseModel):
+  File "/home/dex/Project/ssi-health/backend/issuer/issuer_api.py", line 31, in IssueRequest
+    expiration_date: Optional[str] = None
+NameError: name 'Optional' is not defined
+WARNING:  WatchFiles detected changes in 'issuer/issuer_api.py'. Reloading...
+INFO:     Started server process [13444]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:47908 - "OPTIONS /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47908 - "OPTIONS /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47922 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47908 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47922 - "OPTIONS /api/issuer/revoke/urn%3Auuid%3Aabc0d5b6-f714-4d64-a965-7de07d6e915b HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47908 - "POST /api/issuer/revoke/urn%3Auuid%3Aabc0d5b6-f714-4d64-a965-7de07d6e915b HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47922 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47922 - "OPTIONS /api/issuer/revoke/urn%3Auuid%3A0de123b1-f1e7-4776-9df8-ae5be3ba7600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47922 - "POST /api/issuer/revoke/urn%3Auuid%3A0de123b1-f1e7-4776-9df8-ae5be3ba7600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47922 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53146 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53146 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38172 - "GET /api/issuer/audit-logs HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:38188 - "GET /api/issuer/audit-logs HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:44146 - "POST /api/issuer/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44146 - "OPTIONS /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44148 - "OPTIONS /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44146 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44148 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53172 - "OPTIONS /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53172 - "OPTIONS /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53172 - "GET /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53194 - "GET /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53172 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53194 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53172 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45470 - "GET /api/issuer/generate-did HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45470 - "GET /api/issuer/wallet/credentials/did%3Akey%3Az6MkhE3ZjksrpW2Gp5x67tvuxCujs1VMKnFfruoK9hBfFCzD HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45478 - "GET /api/issuer/wallet/credentials/did%3Akey%3Az6MkhE3ZjksrpW2Gp5x67tvuxCujs1VMKnFfruoK9hBfFCzD HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59858 - "GET /api/issuer/generate-did HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52876 - "OPTIONS /api/issuer/issue HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52876 - "POST /api/issuer/issue HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52876 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52886 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52876 - "GET /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52886 - "GET /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52876 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52886 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52886 - "GET /api/issuer/wallet/credentials/did%3Akey%3Az6MktgBtFFB3EjJTkCRnym136sm3D57ef43HD1QRSiS1kgyv HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52876 - "GET /api/issuer/wallet/credentials/did%3Akey%3Az6MktgBtFFB3EjJTkCRnym136sm3D57ef43HD1QRSiS1kgyv HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57118 - "OPTIONS /api/verifier/verify HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57118 - "POST /api/verifier/verify HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38422 - "POST /api/issuer/issue HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35872 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38422 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35886 - "GET /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35896 - "GET /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45872 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45872 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45872 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45872 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45872 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45872 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45872 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45872 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45872 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45872 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45872 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45872 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45872 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45872 - "GET /api/fl/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45872 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55134 - "GET /api/issuer/credentials HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45872 - "GET /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55134 - "GET /api/issuer/audit-logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49578 - "POST /api/verifier/verify HTTP/1.1" 200 OK

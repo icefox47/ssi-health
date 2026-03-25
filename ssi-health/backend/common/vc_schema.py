@@ -18,5 +18,6 @@ class VerifiableCredential(BaseModel):
     type: List[str] = ["VerifiableCredential"]
     issuer: str
     issuanceDate: str
+    expirationDate: Optional[str] = None
     credentialSubject: CredentialSubject
     proof: Optional[Proof] = None

@@ -139,6 +139,19 @@ export default function DIDSetup({ vault, setVault }) {
             </pre>
           </div>
         )}
+
+        <div className="pt-4 mt-4 border-t border-gray-200">
+          <button
+            onClick={() => {
+              if(window.confirm("Are you sure? This will replace your current DID and all credentials will be lost. Proceed?")) {
+                handleGenerate();
+              }
+            }}
+            className="w-full py-3 rounded-xl text-sm font-bold text-red-500 hover:text-white border border-red-500 hover:bg-red-500 transition-colors cursor-pointer"
+          >
+            Reset Identity & Generate New DID
+          </button>
+        </div>
       </div>
     );
   }

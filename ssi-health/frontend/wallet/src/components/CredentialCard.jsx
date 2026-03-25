@@ -32,12 +32,20 @@ export default function CredentialCard({ credential }) {
 
   const claims = credential.credentialSubject || {};
   const issuanceDate = credential.issuanceDate
-    ? new Date(credential.issuanceDate).toLocaleDateString("en-IN", {
+    ? new Date(credential.issuanceDate).toLocaleDateString("en-US", {
         year: "numeric",
-        month: "long",
+        month: "short",
         day: "numeric",
       })
     : "Unknown";
+
+  const expirationDate = credential.expirationDate
+    ? new Date(credential.expirationDate).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      })
+    : "Never";
 
   // Build compact QR payload (entire VC + timestamp)
   const qrPayload = JSON.stringify({
@@ -56,7 +64,10 @@ export default function CredentialCard({ credential }) {
             </div>
             <div>
               <h3 className="font-bold text-base">{credType.replace(/([A-Z])/g, " $1").trim()}</h3>
-              <p className="text-white/70 text-xs">Issued: {issuanceDate}</p>
+              <p className="text-white/70 text-xs mt-1">Issued: {issuanceDate}</p>
+              {credential.expirationDate && (
+                <p className="text-red-200 text-xs font-semibold">Expires: {expirationDate}</p>
+              )}
             </div>
           </div>
           <div className="flex items-center gap-1 bg-white/20 rounded-full px-3 py-1">
