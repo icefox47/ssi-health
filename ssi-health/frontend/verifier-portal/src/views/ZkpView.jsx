@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { UserCheck, Upload, FileJson, Clock, CheckCircle, XCircle } from 'lucide-react';
 
+const getApiBase = () => {
+  const host = window.location.hostname;
+  const port = window.location.protocol === 'https:' ? '8001' : '8000';
+  const protocol = window.location.protocol === 'https:' ? 'https:' : 'http:';
+  return `${protocol}//${host}:${port}`;
+};
+
 const ZkpView = () => {
   const [proofText, setProofText] = useState('');
   const [signalsText, setSignalsText] = useState('["1"]'); // Default prototype signal
@@ -20,7 +27,7 @@ const ZkpView = () => {
         verificationKey: {}
       };
 
-      const res = await axios.post('http://localhost:8000/api/verifier/verify-zkp', payload);
+      const res = await axios.post(`${getApiBase()}/api/verifier/verify-zkp`, payload);
       const endTime = performance.now();
       
       setVerificationData({

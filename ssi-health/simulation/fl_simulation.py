@@ -80,6 +80,15 @@ def main():
     try:
         requests.post(f"{API_URL}/reset")
         print("Server reset.")
+        
+        # Verify client count matches minimum clients requirement
+        status = requests.get(f"{API_URL}/status").json()
+        min_clients = status.get("min_clients", 5)
+        if args.clients < min_clients:
+            print(f"\n[ERROR] Specified clients ({args.clients}) is less than the backend minimum ({min_clients}).")
+            print("The simulation will hang because the backend aggregator will never trigger FedAvg.")
+            print(f"Please run the simulation with at least --clients {min_clients}\n")
+            return
     except Exception as e:
         print("Failed to reach server. Is backend running?", e)
         return

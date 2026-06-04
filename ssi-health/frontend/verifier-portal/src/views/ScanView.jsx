@@ -3,6 +3,13 @@ import { Html5QrcodeScanner } from 'html5-qrcode';
 import axios from 'axios';
 import { ShieldCheck, ShieldAlert, ShieldX, Clock, RefreshCcw } from 'lucide-react';
 
+const getApiBase = () => {
+  const host = window.location.hostname;
+  const port = window.location.protocol === 'https:' ? '8001' : '8000';
+  const protocol = window.location.protocol === 'https:' ? 'https:' : 'http:';
+  return `${protocol}//${host}:${port}`;
+};
+
 const ScanView = () => {
   const [scanResult, setScanResult] = useState(null);
   const [verificationData, setVerificationData] = useState(null);
@@ -19,7 +26,7 @@ const ScanView = () => {
     try {
       scanner = new Html5QrcodeScanner(
         "qr-reader",
-        { fps: 10, qrbox: { width: 300, height: 300 }, supportedScanTypes: [0, 1] }, // 0: Camera, 1: File
+        { fps: 10, qrbox: { width: 300, height: 300 }, supportedScanTypes: [0] }, // 0: Camera only
         /* verbose= */ false
       );
 
@@ -33,7 +40,7 @@ const ScanView = () => {
         },
         (errorMessage) => {
           // ignore scan errors
-        }
+          }
       );
     } catch (e) {
       console.error("Scanner init error:", e);
@@ -61,7 +68,7 @@ const ScanView = () => {
       // The wallet wraps the VC in { vc: {}, timestamp: "" } for QR codes
       const vcToVerify = parsedPayload.vc || parsedPayload;
 
-      const res = await axios.post('http://localhost:8000/api/verifier/verify', { vc: vcToVerify });
+      const res = await axios.post(`${getApiBase()}/api/verifier/verify`, { vc: vcToVerify });
       
       const endTime = performance.now();
       setLatency(Math.round(endTime - startTime));

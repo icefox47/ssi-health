@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { getApiBase } from '../api';
 import { 
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
   AreaChart, Area
@@ -18,7 +19,7 @@ const AnalyticsDashboard = () => {
   useEffect(() => {
     const fetchStatus = async () => {
       try {
-        const res = await axios.get('http://localhost:8000/api/fl/status');
+        const res = await axios.get(`${getApiBase()}/api/fl/status`);
         setData(res.data);
       } catch (error) {
         console.error("FL Status not reachable", error);

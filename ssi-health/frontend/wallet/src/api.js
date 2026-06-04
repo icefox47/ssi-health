@@ -1,4 +1,11 @@
-const API_BASE = "http://localhost:8000/api";
+const getApiBase = () => {
+  const host = window.location.hostname;
+  const port = window.location.protocol === 'https:' ? '8001' : '8000';
+  const protocol = window.location.protocol === 'https:' ? 'https:' : 'http:';
+  return `${protocol}//${host}:${port}`;
+};
+
+const API_BASE = `${getApiBase()}/api`;
 
 export const api = {
   async generateDID() {

@@ -58,3 +58,74 @@ Evaluate the complete end-to-end implementation by proceeding manually through t
    - Within your IDE interface, open `simulation/fl_simulation.py` and run: 
      `python fl_simulation.py --clients 5 --rounds 10`
    - Observe the live trend convergence mapping loss metrics interactively over iterations!
+
+---
+
+## 🛠 Setup & Installation on Linux / Ubuntu
+
+Follow these steps to run this project on any Linux machine or VM:
+
+### 1. Install System Prerequisites
+Ensure Node.js (v20+) and Python 3 with virtual environment support are installed:
+```bash
+# Update package list and install Python + build tools
+sudo apt update
+sudo apt install -y python3-pip python3-venv python3-dev build-essential curl
+
+# Install Node.js (v20) via NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.bashrc
+nvm install 20
+nvm use 20
+```
+
+### 2. Install Project Dependencies
+Run this from the project's root folder:
+```bash
+# Install frontend packages
+cd frontend/wallet && npm install && cd ../..
+cd frontend/issuer-portal && npm install && cd ../..
+cd frontend/verifier-portal && npm install && cd ../..
+
+# Install backend dependencies in a Python virtual environment
+cd backend
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+deactivate
+cd ..
+```
+
+### 3. Install SSL Proxy Tool (For Camera & Phone Access)
+Since mobile browsers block camera access (QR scanning) on insecure `http` connections, you need `local-ssl-proxy` to enable HTTPS:
+```bash
+npm install -g local-ssl-proxy
+```
+
+---
+
+## 🚀 Running the Project
+
+### Step 1: Start Main Services
+In your first terminal, run the unified startup script:
+```bash
+chmod +x start_all.sh
+./start_all.sh
+```
+
+### Step 2: Start SSL Proxies
+Open a second terminal window or tab and run:
+```bash
+chmod +x start_proxies.sh
+./start_proxies.sh
+```
+This opens:
+* **Verifier Portal HTTPS**: `https://<PC_LAN_IP>:5176` (proxied from port `5175`)
+* **Backend API HTTPS**: `https://<PC_LAN_IP>:8001` (proxied from port `8000`)
+
+### Step 3: Accessing from Mobile/Other Devices
+1. Ensure both your hosting device (PC) and phone are connected to the **same Wi-Fi network**.
+2. Note your hosting device's LAN IP address (e.g. run `ip addr` or `ifconfig`).
+3. In your phone's browser, navigate to:
+   **`https://<LAN_IP>:5176`** (e.g., `https://192.168.1.100:5176`).
+4. **Important**: You must explicitly type `https://`. Bypass the self-signed certificate warning (Advanced -> Proceed) to load the page and enable the camera scanner.

@@ -1,6 +1,13 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api/issuer';
+export const getApiBase = () => {
+  const host = window.location.hostname;
+  const port = window.location.protocol === 'https:' ? '8001' : '8000';
+  const protocol = window.location.protocol === 'https:' ? 'https:' : 'http:';
+  return `${protocol}//${host}:${port}`;
+};
+
+const API_URL = `${getApiBase()}/api/issuer`;
 
 const api = axios.create({
   baseURL: API_URL,
