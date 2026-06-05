@@ -18,7 +18,27 @@ init_db()
 
 router = APIRouter()
 
-ISSUER_PRIV_BYTES, ISSUER_PUB_BYTES = generate_keypair()
+import os
+from cryptography.hazmat.primitives.asymmetric import ed25519
+from cryptography.hazmat.primitives import serialization
+
+KEY_FILE = "issuer_private_key.pem"
+
+if os.path.exists(KEY_FILE):
+    with open(KEY_FILE, "rb") as f:
+        ISSUER_PRIV_BYTES = f.read()
+    # Reconstruct public key bytes from private bytes
+    private_key = ed25519.Ed25519PrivateKey.from_private_bytes(ISSUER_PRIV_BYTES)
+    public_key = private_key.public_key()
+    ISSUER_PUB_BYTES = public_key.public_bytes(
+        encoding=serialization.Encoding.Raw,
+        format=serialization.PublicFormat.Raw
+    )
+else:
+    ISSUER_PRIV_BYTES, ISSUER_PUB_BYTES = generate_keypair()
+    with open(KEY_FILE, "wb") as f:
+        f.write(ISSUER_PRIV_BYTES)
+
 ISSUER_DID = derive_did_key(ISSUER_PUB_BYTES)
 
 ADMIN_USERNAME = "admin"
